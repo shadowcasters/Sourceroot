@@ -1,0 +1,151 @@
+var themeImage = {
+
+    button_black_dark_left :{ cssPosition:" 0 0px", size:{width:5,height:30} },
+    button_black_dark_right :{ cssPosition:" 0 -35px", size:{width:5,height:30} },
+
+
+    toolBar_main_menu_left :{ cssPosition:" 0 -1578px", size:{width:9, height:40} },
+    toolBar_main_menu_right :{ cssPosition:" 0 -1622px", size:{width:4, height:40} },
+    toolBar_main_menu_controlPanel :{ cssPosition:" -10px -1578px", size:{width:10, height:40} },
+
+    selectbox_drop_button :{ cssPosition:" 0 -895px", size:{width:26,height:30} },
+    selectbox_left :{ cssPosition:" 0 -930px", size:{width:3,height:30} },
+
+    textbox_left :{ cssPosition:" 0 -1007px", size:{width:4,height:22} },
+    textbox_right :{ cssPosition:" 0 -1034px", size:{width:4,height:22} },
+
+    /// Application Specific Images
+    icon_id: { cssPosition:"0 -1688px", size:{width:30,height:30} },
+    
+    icon_menu_contracttest:{ cssPosition:" 0 -1669px", size:{width:16,height:16} },
+    icon_menu_contracthighlight :{ cssPosition:" -20px -1578px", size:{width:7,height:8} },
+    icon_menu_expandhighlight :{ cssPosition:" -20px -1588px", size:{width:7,height:8} },
+    icon_menu_contract :{ cssPosition:" -20px -1600px", size:{width:7,height:8} },
+    icon_menu_expand :{ cssPosition:" -20px -1610px", size:{width:7,height:8} },
+    icon_face_devilish :{ cssPosition:" 0 -254px", size:{width:16,height:16} },
+    icon_face_glasses :{ cssPosition:" 0 -275px", size:{width:16,height:16} },
+    icon_face_grin :{ cssPosition:" 0 -296px", size:{width:16,height:16} },
+    icon_face_monkey :{ cssPosition:" 0 -317px", size:{width:16,height:16} },
+    icon_face_smile :{ cssPosition:" 0 -338px", size:{width:16,height:16} },
+    icon_face_wink :{ cssPosition:" 0 -359px", size:{width:16,height:16} },
+    icon_folder :{ cssPosition:" 0 -382px", size:{width:16,height:16} },
+    icon_media_playback_start :{ cssPosition:" 0 -585px", size:{width:16,height:16} },
+    icon_system_exit :{ cssPosition:" 0 -1292px", size:{width:16,height:16} },
+    icon_system_new :{ cssPosition:" 0 -1312px", size:{width:16,height:16} },
+    icon_system_open :{ cssPosition:" 0 -1327px", size:{width:16,height:16} },
+    icon_menu_submenu :{ cssPosition:" 0 -1369px", size:{width:16,height:16} },
+    icon_system_import :{ cssPosition:" 0 -1346px", size:{width:16,height:16} },
+    icon_media_playback_stop :{ cssPosition:" 0 -606px", size:{width:16,height:16} },
+    icon_media_seek_backward :{ cssPosition:" 0 -627px", size:{width:16,height:16} },
+    icon_media_seek_forward :{ cssPosition:" 0 -648px", size:{width:16,height:16} },
+    icon_preferences_system_windows :{ cssPosition:" 0 -669px", size:{width:16,height:16} },
+    icon_preferences_system :{ cssPosition:" 0 -690px", size:{width:0,height:0} },
+    icon_user_trash :{ cssPosition:" 0 -1061px", size:{width:16,height:16} },
+    icon_window_new :{ cssPosition:" 0 -1082px", size:{width:16,height:16} },
+    icon_system_search :{ cssPosition:" 0 -965px",size:{width:16,height:16} },
+    icon_tab_new :{ cssPosition:" 0 -986px", size:{width:16,height:16} },
+
+    ///////////////// Comment Bubble \\\\\\\\\\\\\\
+   
+    commentBubble_small_primary_extended :{ cssPosition:" 0 -740px", size:{width:13,height:12} },
+
+    ///////////////// Windows \\\\\\\\\\\\\\\\\\\\\\
+    window_controls_close :{ cssPosition:" 0 -1103px", size:{width:16,height:20} },
+    window_controls_min :{ cssPosition:" 0 -1128px", size:{width:18,height:20} },
+    window_controls_max :{ cssPosition:" 0 -1221px", size:{width:18,height:20} },
+    window_statusbar_resizer :{ cssPosition:" 0 -1153px", size:{width:14,height:13} },
+    window_statusbar_right :{ cssPosition:" 0 -1244px", size:{width:5,height:22} },
+    window_statusbar_left :{ cssPosition:" 0 -1267px", size:{width:5,height:22} },
+    window_titlebar_left :{ cssPosition:" 0 -1171px", size:{width:5,height:21} },
+    window_titlebar_right :{ cssPosition:" 0 -1196px", size:{width:5,height:21} },
+
+    /////////////// 3x3 Panel Corners \\\\\\\\\\\\\\\\\\\\\\\
+    panel_small_primary_top_left :{ cssPosition:" 0 -1384px", size:{width:3,height:3} },
+    panel_small_primary_top_right :{ cssPosition:" 0 -1389px", size:{width:3,height:3} },
+    panel_small_primary_bottom_right :{ cssPosition:" 0 -1394px", size:{width:3,height:3} },
+    panel_small_primary_bottom_left :{ cssPosition:" 0 -1399px", size:{width:3,height:3} },
+    panel_small_light_top_left :{ cssPosition:" 0 -1404px", size:{width:3,height:3} },
+    panel_small_light_top_right :{ cssPosition:" 0 -1409px", size:{width:3,height:3} },
+    panel_small_light_bottom_right :{ cssPosition:" 0 -1414px", size:{width:3,height:3} },
+    panel_small_light_bottom_left :{ cssPosition:" 0 -1419px", size:{width:3,height:3} },
+    panel_small_dark_top_left :{ cssPosition:" 0 -1423px", size:{width:3,height:3} },
+    panel_small_dark_top_right :{ cssPosition:" 0 -1428px", size:{width:3,height:3} },
+    panel_small_dark_bottom_right :{ cssPosition:" 0 -1433px", size:{width:3,height:3} },
+    panel_small_dark_bottom_left :{ cssPosition:" 0 -1438px", size:{width:3,height:3} },
+    panel_small_menu_top_right :{ cssPosition:" 0 -1720px", size:{width:3,height:3} },
+    panel_small_menu_top_left :{ cssPosition:" 0 -1724px", size:{width:3,height:3} },
+    panel_small_menu_bottom_right :{ cssPosition:" 0 -1729px", size:{width:3,height:3} },
+    panel_small_menu_bottom_left :{ cssPosition:" 0 -1734px", size:{width:3,height:3} },
+
+    //////////////// 9X9 Panel Corners ///////////////////////
+    panel_medium_light_top_left :{ cssPosition:" 0 -1442px", size:{width:9,height:9} },
+    panel_medium_light_top_right :{ cssPosition:" 0 -1453px", size:{width:9,height:9} },
+    panel_medium_light_bottom_left:{ cssPosition:" 0 -1464px", size:{width:9,height:9} },
+    panel_medium_light_bottom_right:{ cssPosition:" 0 -1475px", size:{width:9,height:9} },
+    panel_medium_primary_top_left :{ cssPosition:" 0 -1486px", size:{width:9,height:9} },
+    panel_medium_primary_top_right :{ cssPosition:" 0 -1497px", size:{width:9,height:9} },
+    panel_medium_primary_bottom_left:{ cssPosition:" 0 -1508px", size:{width:9,height:9} },
+    panel_medium_primary_bottom_right:{ cssPosition:" 0 -1519px", size:{width:9,height:9} },
+    panel_medium_dark_top_left :{ cssPosition:" 0 -1530px", size:{width:9,height:9} },
+    panel_medium_dark_top_right :{ cssPosition:" 0 -1541px", size:{width:9,height:9} },
+    panel_medium_dark_bottom_left :{ cssPosition:" 0 -1552px", size:{width:9,height:9} },
+    panel_medium_dark_bottom_right :{ cssPosition:" 0 -1563px", size:{width:9,height:9} },
+
+    /////////////// 18 x 18 Panel Corners \\\\\\\\\\\\\\\\\\\\
+    panel_large_dark_bottom_left :{ cssPosition:" 0 -70px", size:{width:18,height:18} },
+    panel_large_dark_bottom_right :{ cssPosition:" 0 -116px",size:{width:18,height:18} },
+    panel_large_dark_top_left :{ cssPosition:" 0 -162px", size:{width:18,height:18} },
+    panel_large_dark_top_right :{ cssPosition:" 0 -208px", size:{width:18,height:18} },
+    panel_large_light_bottom_right :{ cssPosition:" 0 -401px", size:{width:18,height:18} },
+    panel_large_light_bottom_left :{ cssPosition:" 0 -447px", size:{width:18,height:18} },
+    panel_large_light_top_right :{ cssPosition:" 0 -493px", size:{width:18,height:18} },
+    panel_large_light_top_left :{ cssPosition:" 0 -539px", size:{width:18,height:18} },
+    panel_large_primary_bottom_left :{ cssPosition:" 0 -711px", size:{width:18,height:18} },
+    panel_large_primary_bottom_right :{ cssPosition:" 0 -757px", size:{width:18,height:18} },
+    panel_large_primary_top_left :{ cssPosition:" 0 -803px", size:{width:18,height:18} },
+    panel_large_primary_top_right :{ cssPosition:" 0 -849px", size:{width:18,height:18} }
+
+
+}
+
+var themeHorizontalTile = {
+
+        button_dark_background:{cssPosition:" 0 0",size:{width:1,height:30}},
+        selectbox_background:{ cssPosition:" 0 -35px",size:{width:1,height:20}},
+        textbox_background:{ cssPosition:" 0 -70px",size:{width:1,height:22}},
+        toolBar_menu_background:{ cssPosition:" 0 -256px",size:{width:1,height:40}},
+        window_menu_bar:{ cssPosition:" 0 -187px",size:{width:1,height:22}},
+        window_status_bar:{ cssPosition:" 0 -212px",size:{width:1,height:22}},
+        window_titlebar_background:{ cssPosition:" 0 -163px",size:{width:1,height:21}},
+        panel_light_top:{cssPosition:" 0 -237px",size:{width:1,height:3}},
+        panel_primary_top:{cssPosition:" 0 -240px",size:{width:1,height:3}},
+        panel_dark_top:{cssPosition:" 0 -243px",size:{width:1,height:3}},
+        panel_light_bottom:{cssPosition:" 0 -252px",size:{width:1,height:3}},
+        panel_primary_bottom:{cssPosition:" 0 -249px",size:{width:1,height:3}},
+        panel_dark_bottom:{cssPosition:" 0 -244px",size:{width:1,height:3}},
+        panel_menu_top:{cssPosition:" 0 -298px",size:{width:1,height:3}},
+        panel_menu_bottom:{cssPosition:" 0 -301px",size:{width:1,height:3}}
+
+}
+
+var themeVerticalTile ={
+     window_centerPayne_right:{ cssPosition:" 0 0",size:{width:5,height:2}},
+     window_centerPayne_left:{ cssPosition:" -5px 0",size:{width:5,height:2}},
+
+     panel_light_left:{cssPosition:"-10px 0",size:{width:3,height:1}},
+     panel_primary_left:{cssPosition:"-13px 0",size:{width:3,height:3}},
+     panel_dark_left:{cssPosition:"-16px 0",size:{width:3,height:3}},
+
+     panel_dark_right:{cssPosition:"-19px 0",size:{width:3,height:3}},
+     panel_primary_right:{cssPosition:"-22px 0",size:{width:3,height:3}},
+     panel_light_right:{cssPosition:"-25px 0",size:{width:3,height:3}},
+
+     panel_menu_right:{cssPosition:"-34px 0",size:{width:3,height:3}},
+     panel_menu_left:{cssPosition:"-37px 0",size:{width:3,height:3}}
+
+     
+  }
+
+var themeAnimatedIcons={
+    loading:{src:"images/animated/loaderB16.gif",width:16,height:16}
+}

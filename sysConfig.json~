@@ -1,0 +1,34 @@
+{
+    "themeDirectory": "themes/",
+    "appDirectory":"apps/",
+    "tofuiDirectory":"framework/",
+    "widgetDirectory":"widgets/",
+    "fontsDirectory":"fonts/",
+    "tofuiUrl":"http://www.hyperfall.com",
+    "includeFiles":[
+     "SREvents.js",
+     "SRLayout.js",
+     "TConcurrent.js",
+     "TDraggable.js",
+     "TResizable.js",
+     "UIThemeLoader.js",
+     "SRFontUtils.js",
+     "FontObject.js",
+     "UIEffects.js",
+     "FoundationWidget.js",
+     "UIWidget.js",
+     "Collections.js",
+     "UIImageUtils.js",
+     "SRArrayList.js",
+     "foundationWidgets.js"
+    ],
+    "fonts":{
+    	
+    }, 
+    "apps":{
+    	"hyperfall":{
+    		
+    	}
+    }
+    
+}

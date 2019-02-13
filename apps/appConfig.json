@@ -1,0 +1,17 @@
+{
+"tofuiShowcase": {"dir":"tofuiDemo/", "bootstrap":"tofuiDemo.js"},
+    "services": {
+        "ChatServiceDemo":{
+            "URL": "http://services.hyperfall.com",
+            "services":["chat"]
+        }
+    },
+
+"hyperfall": {"dir":"hyperfall/", "bootstrap":"hyperfall.js"},
+    "services": {
+        "HyperDB":{
+            "URL": "http://services.hyperfall.com",
+            "services":["hyperfall"]
+        }
+    },
+}

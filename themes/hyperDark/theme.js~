@@ -1,0 +1,130 @@
+
+
+@inject("images.js");
+
+var theme = {
+spriteMapUrl:"-- Script Defined",
+/**
+ *schmas are color combinations used to form UI components.
+ *a schema contains the following options
+ *primary:{base:"color",contrast:"..",selected:"..",highlight:".."}
+ */
+schema:{
+  dark:{ base:"565656", contrast:"ffffff",fontSize:20, fontFamily:"Gill, Helvetica, sans-serif",fontColor:"white",selected:"e1ecff",highlight:{color:"605a51", fontColor:"white"} },
+  primary:{ base:"ababab", contrast:"383838",fontColor:"black",selected:"e1ecff",highlight:{color:"605a51", fontColor:"white"} },
+  light:{base:"ececec", contrast:"383838",fontColor:"black",selected:"e1ecff",highlight:{color:"605a51", fontColor:"white"} },
+  menu:{ base:"efebe7", contrast:"5c5c5c",fontColor:"black",selected:"89c3ff",highlight:{color:"5c5c5c",fontColor:"white"} }
+},
+
+
+// fonts will assume color attributes of their schema by default, this defines the base font family and size of the font
+fonts:{
+    primary:{
+        family:"Gill, Helvetica, sans-serif",
+        size:12,
+        color:"383838"
+    }
+},
+
+///////////// Panel \\\\\\\\\\\\\\\\\\
+panel:{
+    defaultImageSet:"small",
+    defaultSchema:"primary",
+    innerPadding:5,
+//TODO: this needs to be in the Theme loader, the theme file is for settings only.
+    imageSets:["small", "medium", "large"],
+    images:[
+        "top_left",
+        "top_right",
+        "bottom_left",
+        "bottom_right"
+     ],
+     horizontalTiles:[
+         "top",
+         "bottom"
+     ],
+     verticalTiles:[
+         "left",
+         "right"
+     ]
+},
+///////////// Button \\\\\\\\\\\\\\\\\\
+button:{
+    defaultImageSet:"black",
+    defaultSchema:"dark",
+    defaultWidth:75,
+    defaultText:"Submit",
+    imageSets:["black"],
+    images:[
+        "left",
+        "right",
+     ],
+     horizontalTiles:[
+         "background"
+     ]
+},
+///////////// Tool Bar  \\\\\\\\\\\\\\\\\\
+toolBar:{
+    defaultImageSet:"main",
+    defaultSchema:"menu",
+    imageSets:["main"],
+    images:[
+        "left",
+        "right",
+        "expand",
+        "contract",
+        "controlPanel"
+     ],
+     horizontalTiles:[
+         "background"
+     ]
+},
+
+///////////// Window \\\\\\\\\\\\\\\\\\
+window: {
+
+    schema:"primary",
+    unFocusedOpacityWeight:10,
+    unFocusedShadowWeight:30,
+    onDragCursor:"move",
+    titleBar:{
+      left:themeImage.window_titlebar_left,
+      background:themeHorizontalTile.window_titlebar_background,
+      right:themeImage.window_titlebar_right,
+      close:themeImage.window_controls_close,
+      max:themeImage.window_controls_max,
+      min:themeImage.window_controls_min,
+      defaultIcon:"window.new",
+      font:{color:"white", bold:true}
+    },
+    centerPanel:{
+      color:"d1d0d1",
+      left:themeVerticalTile.window_centerPayne_left,
+      right:themeVerticalTile.window_centerPayne_right
+    },
+    statusBar:{
+      left:themeImage.window_statusbar_left,
+      background:themeHorizontalTile.window_status_bar,
+      right:themeImage.window_statusbar_right,
+      resizer:themeImage.window_statusbar_resizer
+    },
+    divider:{
+        inner:"b3b1af",
+        outter:"ffffff"
+    },
+    menuBar:{
+        background:themeHorizontalTile.window_menu_bar,
+        schema:"menu",
+        collapseTimeout:1000,
+        menu:{
+            itemSpacer:5,
+            onHover:true
+        }
+    }
+
+}
+/////////////// Button \\\\\\\\\\\\\\\
+
+
+}
+
