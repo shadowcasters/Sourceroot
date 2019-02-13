@@ -1,0 +1,20 @@
+/* 
+ * Settings that let the compiler locate files, parse annotations and store
+ * newly compiled scripts. There are all sorts of goodies associated with this
+ * script.
+ *
+ * Author: Richard Corsale
+ * Credits: Every software developer and mathematician that ever lived.
+ *
+ * Fight Software Patents!!
+ */
+
+{
+
+    "root":"compiler/",
+    "URL":"http://www.test.com/tofui/compiler",
+    "includeFiles":[
+        "test.js",
+        "subScripts/test.js"
+    ]
+}

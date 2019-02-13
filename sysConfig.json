@@ -1,0 +1,27 @@
+{
+"directories":{
+    "root":"./",
+	"theme": "themes/",
+    "apps":"apps/",
+    "tofui":"framework/",
+    "widget":"widgets/",
+    "fonts":"fonts/"
+},
+"include":[
+     "SREvents.js",
+     "SRLayout.js",
+     "TConcurrent.js",
+     "TDraggable.js",
+     "TResizable.js",
+     "UIThemeLoader.js",
+     "SRFontUtils.js",
+     "FontObject.js",
+     "UIEffects.js",
+     "FoundationWidget.js",
+     "UIWidget.js",
+     "Collections.js",
+     "UIImageUtils.js",
+     "SRArrayList.js",
+     "foundationWidgets.js"
+    ]
+}
