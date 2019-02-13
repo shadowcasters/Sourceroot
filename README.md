@@ -1,2 +1,4 @@
 # Sourceroot
 An end to end system for developing modern applications with an extremely low learning curve. The system was refactored a while ago and I'm currently putting it back together. Updating the theme (It was from an old ubuntu gnome2 windowing screenshot and old Icons you can see the image (there's only one and that's the secret to it's speed) and the configuration of the theme in themes/hyperdark). When I'm done it will be easier to compile your widgets and your server side code. I plan on adding Jython and CommonJS so you can code server side in new languages. The web desktop will be back online soon and you'll be able to download the whole server.  
+
+By the way if you wan't to support this project, please simply link to my friends autoshop. I've known him since the sandbox and he needs customers http://www.allautocaretallahassee.com 
