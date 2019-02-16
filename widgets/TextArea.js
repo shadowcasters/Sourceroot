@@ -1,40 +1,19 @@
 /* 
- * 
-textarea#styled {
-        width: 600px;
-        height: 120px;
-        border: 3px solid #cccccc;
-        padding: 5px;
-        font-family: Tahoma, sans-serif;
-        background-image: url(bg.gif);
-        background-position: bottom right;
-        background-repeat: no-repeat;
-}
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
 
-TextAreaInput.prototype = new Panel;
+TextAreaInput.prototype = new UIWidget;
 TextAreaInput.prototype.widgetName = "textAreaInput";
 TextAreaInput.prototype.constructor = TextAreaInput;
-TextAreaInput.prototype.defaultProperties=
-    {
-     width:400,
-     height:300
-    }
+
 function TextAreaInput(configObject){
     this.initWidget(configObject);
-    this.init();
-    
-    var mp = document.createElement("textarea");
-    this.mainPanel.addChild(mp);
-    this.mainPanel = mp;
+    this.mainPanel = document.createElement("textarea");
     this.mainPanel.style.width = "100%";
     this.mainPanel.style.height = "100%";
+    this.renderPayne.addChild(this.mainPanel);
     this.setSelectable(true);
-    this.renderPayne.setAbsolute();
-    
-   
 }
 
 TextAreaInput.prototype.write = function(txt){
@@ -79,7 +58,6 @@ TextAreaInput.prototype.clear = function(){
 }
 
 TextAreaInput.prototype.onInsert = function(){
-	this.doRender();
     var _parent = this;
     if(this.onEnter)
         this.mainPanel.onkeyup = function(e){

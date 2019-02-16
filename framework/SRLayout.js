@@ -283,15 +283,6 @@ getTable:function(rows,columns){
       return ret;
      }catch(e){throw "Unable to getCell  row:"+row+" column:"+column+" error:"+e.message;}
     }
-    
-    rtbl.setRowHeight = function(row, size){
-			this.getRow(row).style.height = size+"px";
-	}
-	
-	rtbl.setColumnWidth = function(col, size){
-			this.getColumn(col).style.width = size+"px";
-	}
-    
 
        // Horizontal alignment..
     rtbl.setHorizontalAlignment = function(position){
@@ -353,56 +344,25 @@ getTable:function(rows,columns){
     return rtbl;
 },
 
-enableWordWrap: function(ele){
-var mod = ele.mainPanel?ele.mainPanel:(ele.renderPayne?ele.renderPayne:ele);
-if(!IE){
-mod.style.overflow = "hidden";
-mod.style.whiteSpace = "wrap";
-mod.style.wordWrap = "break-word";
-}else{
-	mod.innerHTML = mod.innerHTML.replace(/(.*?)/g, '<wbr />');
-}
-
-},
-
-enableEllipsis: function(ele){
-	mod.style.textOverflow = "ellipsis";
-	mod.style.overflow = "hidden";
-	mod.style.whiteSpace = "nowrap";
-	mod.style.wordWrap = "break-word";
-},
-
-disableWordWrap: function(ele){
-var mod = ele.mainPanel?ele.mainPanel:ele;
-mod.style.whiteSpace = "nowrap";
-mod.style.wordWrap = "";
-mod.style.overflow = "scroll";
-},
-
 getPreText:function(text, enableWordWrap){
-    var d = document.createElement("pre");
-	
-    d.appendChild(document.createTextNode(text));
-//    _SRSetStyle(d, "white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; white-space: -moz-pre-wrap; width 99%'");
+    var d = document.createElement("div");
+ 
+    d.innerHTML = text;
+    _SRSetStyle(d, "white-space: pre-wrap; white-space: -moz-pre-wrap; white-space: -pre-wrap; white-space: -o-pre-wrap; white-space: -moz-pre-wrap; width 99%'");
 
- //  d.style.display = IE?"inline":"inline-block";
-   if(enableWordWrap)
-    this.enableWordWrap(d);
-   
-   
-   
-//   d.style.display = IE?"inline":"inline-block";
-   d.clear = function(){this.innerHTML = "";}
-   d.setText = function(txt){this.clear();this.appendChild(document.createTextNode(txt));}
-   d.setWidth = function(x){SRLayout.setWidth(this,x);}
-   d.setHeight = function(y){SRLayout.setHeight(this,y);}
+   d.style.display = "inline-block";
+   if(enableWordWrap){
+    d.style.wordWrap = "break-word";
+   }else{
+        d.style.whiteSpace = "noWrap";
+   }
    return d;
 },
 
 getTextDiv:function(txt, fontObj){
     var tDiv = document.createElement("div");
     tDiv.style.display = IE?"inline":"inline-block";
-    tDiv.style.whiteSpace = "nowrap";
+    tDiv.style.whiteSpace = "noWrap";
     tDiv.id = _SRGetUniqueId();
     tDiv.setTop = function(y){SRLayout.setTop(this,y);}
     tDiv.setLeft = function(x){SRLayout.setLeft(this,x);}
@@ -410,7 +370,6 @@ getTextDiv:function(txt, fontObj){
     tDiv.setWidth = function(x){SRLayout.setWidth(this,x);}
     tDiv.setHeight = function(y){SRLayout.setHeight(this,y);}
     tDiv.setFont = function(fontObj){_SRFontUtils.setFontObject(tDiv, fontObj);}
-    tDiv.setWordWrap = function(bool){_SRFontUtils.setFontObject(tDiv, fontObj);}
     tDiv.clear = function(){
         if(IE)
             this.innerText = "";
@@ -530,7 +489,7 @@ getDiv: function(width,height,handle){
         
       }
       
-  
+   //   div.setPosition(0, 0);
       
       return div.setSize(width,height);
 },

@@ -10,18 +10,42 @@ function _SRLoadSchema(div, schemaObj){
     
     div.style.backgroundColor = schemaObj.base;
     div.style.borderColor = schemaObj.contrast;
-    div.style.color = schemaObj.contrast;
+    div.style.color = schemaObj.font;
 }
 
 
 var UIThemeLoader = function(parent){
     this.parent = parent;
-	
+
+    this.font = new UIFont(this.parent);
+
     if(theme[this.parent.widgetName]){
         this.themeObject = theme[this.parent.widgetName];
     }else
         this.themeObject = {};
 
+
+    // creates preliminary font object
+    if(this.themeObject.defaultFont)
+        this.fontObject = theme.fonts[this.themeObject.defaultFont];
+    else
+        this.fontObject = {};
+
+    // set specified font attributes for this theme, if one is defined
+   
+    if(this.themeObject.font){
+       if(typeof this.themeObject.font == "object"){
+            for(var fo in this.themeObject.font){
+               this.fontObject[fo] = this.themeObject.font[fo];
+            }
+       }else{
+           if(typeof this.themeObject.font == "string"){
+                this.fontObject = theme.fonts[this.themeObject.font];
+           }
+       }
+
+        this.setFont(this.fontObject);
+    }
 
     this.imageSetData = new Array;
 
@@ -79,7 +103,6 @@ UIThemeLoader.prototype.getSchemaObj = function(schemaTitle){
 
 
 UIThemeLoader.prototype.setSchemaTheme = function(schemaTitle){
-this.schema = schemaTitle;
 
 if(typeof schemaTitle == "object" && schemaTitle.alt){
     this.schema = schemaTitle;
@@ -89,6 +112,10 @@ if(typeof schemaTitle == "object" && schemaTitle.alt){
     this.schema = this.getSchemaObj(this.schemaTitle);
 }
 
+if(this.schema.font){
+    this.fontObject.color = this.schema.font;
+    this.setFont(this.fontObject);
+}
 
 if(this.schema.alt){
     this.altSchema = this.getSchemaObj(this.schema.alt);
@@ -108,6 +135,11 @@ if(this.imageSetData)
  this.parent.schema = this.schema;
 }
 
+
+UIThemeLoader.prototype.setFont = function(fontObj){
+    this.fontObject = fontObj;
+    this.font.loadObject(fontObj);
+}
 
 //////////////// IMAGE DATA \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 

@@ -68,22 +68,19 @@ function SRTableCell(){
     return cell;
 }
 
-/**
- * rows, columns, width, height
- **/
 var SRTable = function(rows,columns,width,height) {
+
     // creates a <table> element and a <tbody> element
-    this.tableElement = document.createElement("table");
-    this.table = this.tableElement;
-	
-	
-    _SRSetUndragable(this.tableElement);
-    this.tableElement.style.borderCollapse = "collapse";
-    this.tableElement.style.emptyCells = "show";
-    this.tableElement.style.tableLayout = "fixed";
-      
+    var tbl = document.createElement("table");
+
+    _SRSetUndragable(tbl);
+    //_SRSetUndragable( this.textDiv);
+        tbl.style.borderCollapse = "collapse";
+        tbl.style.emptyCells = "show";
+        tbl.style.tableLayout = "fixed";
+        this.tableElement = tbl;
         this.rowElementArr = new Array;
-        this.tableElement.style.zIndex = 1;
+        tbl.style.zIndex = 1;
         this.renderPayne = SRLayout.getDiv(width,height);
         this.renderPayne.style.position = "absolute";
         this.renderPayne.style.overflow = "hidden";
@@ -91,11 +88,11 @@ var SRTable = function(rows,columns,width,height) {
         // preserves the width of the columns for restore after clear.
         this.columnWidth = {};
 
-        this.tableElement.setAttribute("width","100%");
-        this.tableElement.setAttribute("height","100%");
-        this.tableElement.border = "0px";
-        this.tableElement.cellSpacing = 0;
-        this.tableElement.cellPadding = 0;
+        tbl.setAttribute("width","100%");
+        tbl.setAttribute("height","100%");
+        tbl.border = "0px";
+        tbl.cellSpacing = 0;
+        tbl.cellPadding = 0;
        
         this.tableBody = document.createElement("tbody");
         this.tableBody.style.zIndex =1;
@@ -123,7 +120,7 @@ var SRTable = function(rows,columns,width,height) {
             this.rowElementArr.push(row);
         }
         this.tableElement.appendChild(this.tableBody);
-        this.renderPayne.setChildren(this.tableElement,"table");
+        this.renderPayne.setChildren(tbl,"table");
 
         return this;
     }
@@ -208,22 +205,8 @@ var SRTable = function(rows,columns,width,height) {
      *  In short this starts at 1 not 0.
      */
     SRTable.prototype.getCell = function(row,column){
-	  	var rc = this.getRowCount();
-		var cc = this.getColumnCount();
-		if(rc >= row){
-			if(cc >= column)
-				return this.gridArr[row -1][column -1];
-			else
-				 throw "Table has no cell at row:"+row+" column:"+column;
-			
-		}else 
-			throw "Table has no row:"+row;
-			
+      return this.gridArr[row -1][column -1];
     }
-    
-    SRTable.prototype.addToCell = function(row,column,elm){
-		this.getCell(row,column).addChild(elm);
-	}
     /**
      * returns an array containing the specified columns nodes
      */

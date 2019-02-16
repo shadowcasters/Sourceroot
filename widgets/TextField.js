@@ -20,35 +20,29 @@ TextField.prototype.initTextField = function(){
     this.textField.style.position = "static";
     this.textField.style.width = "100%";
     this.textField.style.border = "none";
-    this.textField.style.outline="none";
-    
-    this.setFont("primary");
-    
-    
     this.textField.type = 'text';
-    var lidem = this.theme.getImageSize("left");
-    var ridem = this.theme.getImageSize("right");
-    this.layout = SRLayout.getHorizontalLayout(2,lidem.width,ridem.width);
-    this.layout.setAutoSize(true);
-    this.layout.setHeight(24);
+    this.layout = SRLayout.getHorizontalLayout(2,3,3);
+    this.layout.setAutoSize(false);
+    this.layout.setHeight(21);
     this.layout.style.width="100%";
-   
-
     
+
+    var lidem = this.theme.getImageSize("left");
+    var ridem = this.theme.getImageSize("left");
+
     this.layout.cell1.style.background = this.theme.getImageStyle("left");
-   // this.textField.style.color="ffffff";
     this.layout.cell3.style.background = this.theme.getImageStyle("right");
     this.textField.style.background = this.theme.getHorizontalStyle("background");
+
     this.textField.style.height = (lidem.height)+"px";
     this.layout.setHeight(lidem.height);
+    
     this.layout.addChild(this.textField);
     this.text = "";
     this.addChild(this.layout);
     this.renderPayne.style.height = "";
     this.setAutoSize(true);
     this.renderPayne.style.width="100%";
-    
-    
 }
 
 TextField.prototype.getText = function(){

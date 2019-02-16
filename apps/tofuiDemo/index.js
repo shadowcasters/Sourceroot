@@ -23,16 +23,14 @@
  * Panel Tests
  * 1. create with no settings: -->PASS
  * 
- * 
- * 
  */
 
 // Loads modules base dir is always relative.
-@inject("webBrowser.js");
 @inject("calculator.js");
-@inject("windowTesting.js");
-@inject("panelTesting.js");
 @inject("widgetMaker.js");
+@inject("chatClient.js");
+@inject("connectionSettings.js");
+@inject("panelTesting.js");
 
 function initRenderPayne(){
  var p = new Panel({width:1200,height:800,schema:"light",asContainer:true});
@@ -44,17 +42,16 @@ dockBar.setDragBoundries();
 dockBar.setResizable(true);
 dockBar.setExpandable(true);
 p.addChild(dockBar);
+
 dockBar.addItem("gear", "General Widget Demo", function(){p.addChild(new widgetMaker());});
-
 dockBar.addItem("netconfig", "Connection Monitor",function(){p.addChild(connectionSettings());});
-
 dockBar.addItem("calc", "A simple clientside calculator", function(){p.addChild(new calculator());});
-
-dockBar.addItem("netconfig", "A Browser in a Browser",function()
-{ p.addChild(new webBrowser());});
-
+dockBar.addItem("chat.node", "A Tofui chat client",function(){
+    var ccWindow = new chatClient().window;
+    p.addChild(ccWindow);
+    ccWindow.setPosition(100,75);
+});
 dockBar.addItem("medium.id", "Panel Testing", function(){p.addChild(panelTesting());});
-
 dockBar.addItem("medium.windowsearch", "window Testing", function(){p.addChild(windowTesting());});
 
 }
@@ -109,21 +106,21 @@ function _registerMyListeners(){
    }
 }
 
-//_OAK.onLoad = function(){
-//   var delay = setInterval(
-//    function(){
-//       _registerMyListeners();
-//      if(SoyRouter.Adapter){
-//	    if(SoyClient.isAuthenticated){
- //               SoyClient.connection.open();
- //           }else{
-  //              ChatServiceDemo.authenticate();
-   //         }
+_OAK.onLoad = function(){
+   var delay = setInterval(
+    function(){
+       _registerMyListeners();
+      if(SoyRouter.Adapter){
+	    if(SoyClient.isAuthenticated){
+                SoyClient.connection.open();
+            }else{
+                ChatServiceDemo.authenticate();
+            }
 
-    //        clearInterval(delay);
-	//}
-    //},500,500);
-//}
+            clearInterval(delay);
+	}
+    },500,500);
+}
 
 ////This should be called after the script is loaded, also SoyClient should be the namespace
-//_OAK.initKernel();
+_OAK.initKernel();

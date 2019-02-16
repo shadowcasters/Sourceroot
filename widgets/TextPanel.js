@@ -8,26 +8,16 @@ TextPanel.prototype.defaultProperties=
      width:200,
      height:300,
      margin:5,
+     scrollable:true
     }
 
 function TextPanel(configObject){
     this.initWidget(configObject);
     this.init();
-    
+    // in the event that a margin exceeds the panel, we do want the leaway to show the overflow
+    this.renderPayne.style.overflow = "visible";
     this.textArray = new Array;
-    
-}
-
-TextPanel.prototype.setScrollable = function(){
-	this.mainPanel.style.overflow = "auto";
-}
-
-TextPanel.prototype.setWordWrap = function(bool){
- if(bool){
-		SRLayout.enableWordWrap(this.mainPanel);
-	}else{
-		SRLayout.disableWordWrap(this.mainPanel);
-	}
+    this.clear();
 }
 
 TextPanel.prototype.doWriteHTML = function(text){
@@ -40,7 +30,7 @@ TextPanel.prototype.doWriteHTML = function(text){
      this.textArray[this.textArray.length] = t;
      t.index = this.textArray.length;
      t.innerHTML = (text);
-    
+     t.style.marginLeft = this.margin+"px";
      this.addChild(t);
 }
 
@@ -48,11 +38,11 @@ TextPanel.prototype.doWriteln = function(text){
      if(this.autoClear && this.byteLimit >= this.mainPanel.innerHTML.length)
          this.clear();
 
-     var t = SRLayout.getPreText(text,true);
+     var t = SRLayout.getTextDiv(text);
      this.textArray[this.textArray.length] = t;
      t.index = this.textArray.length;
      t.setText(text);
-     t.setWidth("100%");
+     t.style.marginLeft = this.margin+"px";
      this.addChild(t);
 }
 
@@ -61,7 +51,7 @@ TextPanel.prototype.getLine = function(index){
 }
 
 TextPanel.prototype.clear = function(){
-    this.mainPanel.innerHTML = "";
+    this.mainPanel.innerHTML = "<div width:100%; height:"+this.margin+"px;'></div>";
     this.textArray = new Array;
 }
 
@@ -72,11 +62,6 @@ TextPanel.prototype.setAutoClear = function(bool, byteLimit){
 
 TextPanel.prototype.setMargin = function(val){
     this.margin = val;
-    this.mainLayout.setColumnWidth(1,val);
-	this.mainLayout.setColumnWidth(3,val);
-	this.mainLayout.setRowHeight(1,val);
-	this.mainLayout.setRowHeight(3,val);
-	
 }
 
 TextPanel.prototype.onInsert = function(){

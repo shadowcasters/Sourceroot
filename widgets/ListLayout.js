@@ -13,13 +13,13 @@ function ListLayout(columns,rowHeight,width){
     this.columns = columns || 1;
     this.rowHeight = rowHeight || 25;
     width = width || "100%";
-    
+    this.table = new SRTable(0, columns, width);
     this.renderPayne = this.table.renderPayne;
     this.table.renderPayne.style.height="";
     this.table.renderPayne.height="";
+
     return this;
 }
-
 
 ListLayout.prototype.setFontObject = function(fontObject){
     this.table.tableBody.style.fontFamily = fontObject.family;

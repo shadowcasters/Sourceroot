@@ -11,6 +11,7 @@ Window.prototype.defaultProperties={
     width:200,
     height:200,
     titleText:"New Window",
+    icon:"system.window",
     scrollable:true,
     dragable:true,
     closable:true,

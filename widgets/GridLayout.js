@@ -5,14 +5,16 @@
  * cell: width:auto;
  * table: table-layout:auto;
  */
+
 var GridLayout  = function (rows, columns, width, height){
+
     this.numRows = rows;
     this.numColumns = columns;
     this.width = width;
     this.height = height;
     this.cells = {};
 
-    this.table = SRTable().tableElement;
+    this.table = document.createElement("table");
     this.renderPayne = this.table;
     this.table.width=width?typeof width=="number"?width+"px":width:"100%";
     this.table.height=height?typeof height=="number"?height+"px":height:"100%";

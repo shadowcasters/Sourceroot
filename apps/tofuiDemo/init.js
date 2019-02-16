@@ -19,7 +19,6 @@
 @widget("RadioSelect");
 @widget("GroupPanel");
 @widget("BrowserPanel");
-@widget("BrowserWindow");
 
 // options:
 // ------------
@@ -55,6 +54,10 @@ var WidgetSettings = new Object({
         schema:"light"
     },
     radioSelect:{
-
+      
     }
 });
+
+
+
+

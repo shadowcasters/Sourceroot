@@ -30,7 +30,7 @@ FoundationWidget.prototype.initWidget = function(PropertiesObject){
         }
      }
 // set mainPanel
-	 if(PropertiesObject.mainPanel){
+     if(PropertiesObject.mainPanel){
         if(PropertiesObject.mainPanel.setDynamic)
             this.mainPanel = PropertiesObject.mainPanel;
         else
@@ -54,9 +54,9 @@ FoundationWidget.prototype.initWidget = function(PropertiesObject){
      this.renderPayne.widget = this;
      this.renderPayne.style.position = "relative";
 
-     this.theme = new UIThemeLoader(this);
-     
-     // load widget settings
+
+    this.theme = new UIThemeLoader(this);
+    // load widget settings
     if(WidgetSettings && WidgetSettings[this.widgetName]){
         if(!PropertiesObject)
             PropertiesObject = {};
@@ -69,9 +69,6 @@ FoundationWidget.prototype.initWidget = function(PropertiesObject){
             }
        }
         this.setProperties(PropertiesObject);
-        
-     this.schemaName = this.theme.themeObject.defaultSchema;
-     this.font = new FontObject(this.schemaName,this.mainPanel);
 }
 
 /**
@@ -244,21 +241,16 @@ FoundationWidget.prototype.removeChild = function(child){
 /**
  * Sets the entire object for positioning according to the parent element.
  */
-FoundationWidget.prototype.setAutoSize = function(bool){
-    if(bool || bool==null){
-		this.renderPayne.style.width = "";
-		this.renderPayne.style.height = "";
-		this.renderPayne.style.display = IE?"inline":"inline-block";
-	}else{
-		this.renderPayne.style.width = "";
-		this.renderPayne.style.height = "";
-		this.renderPayne.style.display = IE?"inline":"inline-block";
-	}
+FoundationWidget.prototype.setAutoSize = function(){
+    this.renderPayne.style.width = "";
+    this.renderPayne.style.height = "";
+    this.renderPayne.style.display = IE?"inline":"inline-block";
 }
 
 /**
  * loads and sets, the font object, passed a string representing the font in the theme object or as an object
  */
-FoundationWidget.prototype.setFont = function(fontHandle){
-	this.font.setSchemaFont(fontHandle,this.mainPanel);
+FoundationWidget.prototype.setFontSet = function(fontHandle){
+  _SRLoadFontObj(this.renderPayne,theme.fonts[fontHandle]);
+  _SRLoadFontObj(this.mainPanel,theme.fonts[fontHandle]);
 }

@@ -96,7 +96,7 @@ TabPanel.prototype.addTab = function(title, icon){
     var Tlabel = new Label(title,icon);
     
     var tab = SRLayout.getDiv(Tlabel.getWidth()+10,this.tabHeight);
-    tab.index = this.tabs.length+1;
+    tab.index = this.tabs.length + 1;
     tab.setAbsolute();
     tab.style.overflow = "hidden";
     tab.setLeft(this.nLeft);

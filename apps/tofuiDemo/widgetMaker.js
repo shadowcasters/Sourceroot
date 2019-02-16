@@ -18,6 +18,10 @@ function widgetMaker(){
 
     var selPan = tp.addTab("Selectors", "face.monkey");
    
+
+
+
+
     var lbPan = new Panel({width:129,height:120,schema:"light", scrollable:true});
     lbPan.setPosition(5,5);
     
@@ -119,7 +123,7 @@ function widgetMaker(){
   var teslaB = sTree.addBranch("Tesla",getAppImage("tesla"));
         teslaB.addItem("Roadster");
         teslaB.addItem("Cruiser");
-        teslaB.addItem("S-Series",1,null,function(){alert("In 2019");});
+        teslaB.addItem("S-Series",1,null,function(){alert("In 2011");});
 
     var GMB = sTree.addBranch("General Motors",getAppImage("GM"));
     var GMCars = GMB.addBranch("Cars");
@@ -139,18 +143,10 @@ function widgetMaker(){
 ///////////////////////////////////////////////////////////////////////////////////////
 // -------------------------[ THE DATA WIDGET PANEL. ]-------------------------------//
 ///////////////////////////////////////////////////////////////////////////////////////
-    var dataPan = tp.addTab("Web Demo", "globe");
-    dataPan.setSize("98%");
-    dataPan.setPosition(2,2);
-    dataPan.setScrollable(false);    
-    var webPan = new BrowserPanel();
-    webPan.setPosition(5,5);
-    webPan.setSize("99%");  
-    webPan.navigate("https://netty.io/");  
-    
- //   new tp.addTab("Browser", "globe");    
-    
-     dataPan.addChild(webPan);
+     var dataPan = tp.addTab("Imps Demo", "system.import");
+
+
+     //dataPan.addChild(dataMenu);
 
 
     return win;

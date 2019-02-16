@@ -165,7 +165,7 @@ UIWidget.prototype.addOnRenderEvent = function(evt){
 }
 
 UIWidget.prototype.onWidgetRender = function(){
-    this.font.imposeFont(this.mainPanel);
+    this.theme.font.refresh();
     this.isRendered = true;
     
     ////////// register hooks 

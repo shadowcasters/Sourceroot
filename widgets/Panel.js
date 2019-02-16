@@ -1,3 +1,5 @@
+
+
 /* 
  * A leaner panel usage
  */
@@ -7,76 +9,60 @@ Panel.prototype.widgetName = "panel";
 Panel.prototype.constructor = Panel;
 Panel.prototype.defaultProperties = {
     width:200,
-    height:300
+    height:300,
+    scrollable:true
 }
 
 function Panel (PropertiesObject){
     this.initWidget(PropertiesObject);
     this.init();
-       
-    this.setLeftMargin(20);
-	this.setRightMargin(20);
-	this.setTopMargin(20);
-	this.setBottomMargin(20);
-
-    return this;
 }
 
 Panel.prototype.init = function(){
+    this.renderPayne.style.position = "relative";
     this.renderPayne.style.overflow = "hidden";
-    this.mainLayout = new SRTable(3, 3,"100%","100%");
-    this.renderPayne.addChild(this.mainLayout);
+    this.layout = new GridLayout(3, 3,"100%","100%");
+
+    if(this.horizontalMargin == null){
+       this.horizontalMargin= Math.ceil(this.theme.getImageMap("top.left")[1] / 4);
+    }
+    if(this.verticalMargin == null){
+        this.verticalMargin= Math.ceil(this.theme.getImageMap("top.left")[1] / 4);
+    }
+
     
-    this.topLayout = new SRTable(3, 3,"100%","100%");
-    this.renderPayne.addChild(this.topLayout);
-    this.topLayout.highlightCells();
-    this.topLayout.getCell(2,2).style.overflow = "hidden";
-    this.mainPanel = this.topLayout.getCell(2,2); 
-    
-}
-
-Panel.prototype.setLeftMargin=function(value){
-    if(this.topLayout)
-		this.topLayout.setColumnWidth(1, (value || this.leftMargin));
-   if(value && value != null)
-    this.leftMargin = (value || this.leftMargin);
-}
-
-
-Panel.prototype.setRightMargin=function(value){
-   if(this.topLayout)
-	this.topLayout.setColumnWidth(3, (value || this.leftMargin));
+    this.mainPanel = SRLayout.getDiv("100%","100%").setRelative();
+    _SRFontUtils.setFontObject(this.mainPanel, this.theme.font);
    
-   if(value && value != null)
-    this.rightMargin = (value || this.rightMargin);
+
+
+    this.mainLayout = new GridLayout(3, 3,"100%","100%");
+    this.mainLayout.table.style.position="absolute";
+    this.mainLayout.table.style.zIndex = 1;
+
+    this.mainLayout.setColumnWidth(1, this.horizontalMargin);
+    this.mainLayout.setColumnWidth(3, this.horizontalMargin);
+    this.mainLayout.setRowHeight(1, this.verticalMargin);
+    this.mainLayout.setRowHeight(3, this.verticalMargin);
+    this.mainLayout.addChild(this.mainPanel, 2, 2);
+    this.renderPayne.addChild(this.mainLayout.table);
+    this.renderPayne.addChild(this.layout.table);
+
 }
 
-Panel.prototype.setTopMargin=function(value){
-    
-    if(value && value != null){
-	  this.topMargin = value;
-	}else{
-	  
-	}
-
-   if(this.topLayout)
-  	 this.topLayout.setRowHeight(1, this.topMargin);
-    
-    
+Panel.prototype.setHorizontalMargin=function(value){
+    this.horizontalMargin=value || Math.ceil(this.theme.getImageMap("top.left")[1] / 4);
+    this.mainLayout.setColumnWidth(1, this.horizontalMargin);
+    this.mainLayout.setColumnWidth(3, this.horizontalMargin);
 }
-
-Panel.prototype.setBottomMargin=function(value){
-   if(this.topLayout)
-    this.topLayout.setRowHeight(3, (value || this.bottomMargin));
-    
-   if(value && value != null) 
-    this.bottomMargin = (value || this.bottomMargin);
-   
+Panel.prototype.setVerticalMargin=function(value){
+    this.verticalMargin = value || Math.ceil(this.theme.getImageMap("top.left")[1] / 4);
+    this.mainLayout.setRowHeight(1, this.verticalMargin);
+    this.mainLayout.setRowHeight(3, this.verticalMargin);
 }
-
 
 Panel.prototype.doEmbedMainPanel = function(){
-    this.mainLayout.getCell(2,2).appendChild(this.mainPanel);
+    this.layout.getCell(2,2).appendChild(this.mainPanel);
 }
 
 Panel.prototype.setCorners = function(imageSet){
@@ -88,17 +74,23 @@ Panel.prototype.setCorners = function(imageSet){
 Panel.prototype.setScrollable = function(bool){
     this.isScrollable = bool;
 
-    if(this.topLayout)
+    if(this.isRendered)
         if(bool)
             this.mainPanel.style.overflow = "auto";
         else
             this.mainPanel.style.overflow = "hidden";
 }
 
+Panel.prototype.setMargin = function(margin){
+    this.margin = margin;
+
+    if(this.isRendered)
+        this.sizeMainPanel();
+}
+
+
 Panel.prototype.onInsert = function(){
     this.doRender();
-    
-
 }
 
 Panel.prototype.doRender = function(){
@@ -107,24 +99,25 @@ Panel.prototype.doRender = function(){
         var height = this.theme.getImageMap("top.left")[2];
         
 
-        this.mainLayout.setRowHeight(1,height);
-        this.mainLayout.setColumnWidth(1, width);
-        this.mainLayout.setRowHeight(3,height);
-        this.mainLayout.setColumnWidth(3, width);
+        this.layout.setRowHeight(1,height);
+        this.layout.setColumnWidth(1, width);
+        this.layout.setRowHeight(3,height);
+        this.layout.setColumnWidth(3, width);
 
-        this.mainLayout.getCell(1,1).style.background = this.theme.getImageStyle("top.left");
-        this.mainLayout.getCell(1,2).style.background = this.theme.getHorizontalStyle("top");
-        this.mainLayout.getCell(1,3).style.background = this.theme.getImageStyle("top.right");
+        this.layout.getCell(1,1).style.background = this.theme.getImageStyle("top.left");
+        this.layout.getCell(1,2).style.background = this.theme.getHorizontalStyle("top");
+        this.layout.getCell(1,3).style.background = this.theme.getImageStyle("top.right");
 
-        this.mainLayout.getCell(3,1).style.background = this.theme.getImageStyle("bottom.left");
-        this.mainLayout.getCell(3,2).style.background = this.theme.getHorizontalStyle("bottom");
-        this.mainLayout.getCell(3,3).style.background = this.theme.getImageStyle("bottom.right");
+        this.layout.getCell(3,1).style.background = this.theme.getImageStyle("bottom.left");
+        this.layout.getCell(3,2).style.background = this.theme.getHorizontalStyle("bottom");
+        this.layout.getCell(3,3).style.background = this.theme.getImageStyle("bottom.right");
 
-        this.mainLayout.getCell(2,1).style.background = this.theme.getVerticalStyle("left");
-        this.mainLayout.getCell(2,3).style.background = this.theme.getVerticalStyle("right");
-        this.mainLayout.getCell(2,2).style.backgroundColor = this.theme.schema.base;
+        this.layout.getCell(2,1).style.background = this.theme.getVerticalStyle("left");
+        this.layout.getCell(2,3).style.background = this.theme.getVerticalStyle("right");
+        this.layout.getCell(2,2).style.backgroundColor = this.theme.schema.base;
 
-       
+        if(!this.margin)
+            this.margin = Math.round(this.theme.getImageMap("top.left")[1] /4);
 
         this.setScrollable(this.isScrollable);
         
